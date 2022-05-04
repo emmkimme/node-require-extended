@@ -1,0 +1,11 @@
+{
+    "include": [
+        "./**/*.ts"
+    ],
+    "extends": "../tsconfig.common.json",
+    "compilerOptions": {
+        "declaration": true,
+        "outDir": "../lib",
+    }
+}
+
