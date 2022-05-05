@@ -1,6 +1,6 @@
 {
   "name": "node-require-extended",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Extend Node.js 'require' function in order to be compatible with webpack.",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
   "types": "./lib/index.d.ts",
   "dependencies": {
     "find-parent-dir": "^0.3.1",
-    "parent-module": "^3.0.0"
+    "parent-module": "^2.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.3.1",
