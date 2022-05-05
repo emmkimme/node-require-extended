@@ -4,7 +4,7 @@
   "description": "Extend Node.js 'require' function in order to be compatible with webpack.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emmkimme/iso-languages.git"
+    "url": "git+https://github.com/emmkimme/node-require-extended.git"
   },
   "keywords": [
     "require",
