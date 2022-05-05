@@ -1,6 +1,6 @@
 {
   "name": "node-require-extended",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extend Node.js 'require' function in order to be compatible with webpack.",
   "repository": {
     "type": "git",
