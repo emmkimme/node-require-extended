@@ -96,7 +96,8 @@ Would suggest to activate the feature as late as possible. The alias search is o
 
 
 # Webpack
-We suggest to surround some method calls by 'webpack_ignore_start' / 'webpack_ignore_end' comments. In order to skip them when webpack generate the bundle.
+We suggest to surround some method calls by '{ /* webpack_ignore_start */' / '/* webpack_ignore_end */ }' comments. In order to skip them when webpack generate the bundle.  
+/!\ notice the '{' and '}' usage in comment in order to workaround TypeScript limitation: https://github.com/microsoft/TypeScript/issues/32813
 
 ``` js
 { /* webpack_ignore_start */
@@ -108,7 +109,7 @@ InjectRequireAlias(__dirname, {
 ```
 
 
-You have to keep your comment in your transpiled TypeScript code 
+You have to keep your comment in the transpiled TypeScript code 
 ``` json
 {
     "compilerOptions": {
