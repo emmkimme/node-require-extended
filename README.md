@@ -1,11 +1,20 @@
-# node-require-extended
+# node-require-extended (!!readme still in progress!!)
+In our projects, we have some parts that can be distributed and integrated through npm packages or included and bundled by webpack. 
+Supporting webpack would need to use some specific methods which are not implemented or supported by Node.js:
+- require.context
+- require.resolveWeak
+- require.include
+- aliases
+- read an 'xml' from require (ugly implem but it works ;-)
+
+The idea is add in Node.js these features in order to have the same source code, behaving the same with or without webpack bundl'ification. 
+
 Node.js Implementation in typescript of the 'require.context' webpack function
 https://webpack.js.org/guides/dependency-management/#requirecontext
 
-Support as well alias resolution
+Node.js support of alias
 https://webpack.js.org/configuration/resolve/#resolve
 
-The idea is to have the same source code, behaving the same before and after webpack bundl'ification.
 
 # Installation
 ```Batchfile
@@ -71,14 +80,20 @@ We tried different kind of prefixes and ended with '@@'
 
 
 ## Setup
-In order to add the 'context' function, we need to enhance the current 'require' of the module, you have to call this function before any usage of require.resolve
 
 ```js
 import { InjectRequireAlias } from 'node-require-extended';
 
-InjectRequireAlias(dirname, {});
+InjectRequireAlias(dirname, {
+    '@common': "lib/statics/common"
+});
 
 ```
+
+## Performance
+We redirect the module loading in order to check if the path contains an alias. It may have a performance impact.  
+Would suggest to activate the feature as late as possible. The alias search is optimized in order to search first the common pattern to all your aliases (in our case '@@') rather than testing each alias one by one.
+
 
 # Webpack
 
