@@ -76,7 +76,7 @@ We tried different kind of prefixes and ended with '@@'
 | $ | if use in 'scripts' section of the package.json, considered on Mac/Linux as a var env ! |
 | ~ | already an alias for Max/Linux to Home directory |
 | @ | may conflict with NPM private package prefixed with a @ |
-| ! | does work with webpack as used for loader syntax |
+| ! | does not work with webpack as used for loader syntax |
 
 
 ## Setup
@@ -96,8 +96,31 @@ Would suggest to activate the feature as late as possible. The alias search is o
 
 
 # Webpack
+We suggest to surround some method calls by 'webpack_ignore_start' / 'webpack_ignore_end' comments. In order to skip them when webpack generate the bundle.
+
+``` js
+{ /* webpack_ignore_start */
+InjectRequireContext(require);
+InjectRequireAlias(__dirname, {
+    '@@config-manager-ui': 'ui'
+});
+/* webpack_ignore_end */ }
+```
+
+
+You have to keep your comment in your transpiled TypeScript code 
+``` json
+{
+    "compilerOptions": {
+        "removeComments": false,
 
 ```
+
+``` 
+npm install --save-dev webpack-strip-block
+```
+
+``` js
 const packageJson = require('./package.json')
  
 const webpackConfig = {

@@ -17,7 +17,7 @@
 
         "preserveConstEnums": true,
         "stripInternal": true,
-        "removeComments": true,
+        "removeComments": false,
 
         /* Source Map Options */
         "sourceMap": true,
