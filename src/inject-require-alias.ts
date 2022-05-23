@@ -22,7 +22,6 @@ export function InjectRequireAlias(dirname: string, aliases: any): void {
                     // no aliases declared
                 }
             }
-            return;
         }
         if (aliases) {
             // add default value
