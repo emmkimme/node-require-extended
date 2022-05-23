@@ -12,15 +12,17 @@ export function InjectRequireAlias(dirname: string, aliases: any): void {
     if (isWebpackContext() === false) {
         const package_json_dir = findParentDir.sync(dirname, 'package.json');
         if (package_json_dir) {
-            if (cachedModules.has(package_json_dir) === false) {
-                cachedModules.add(package_json_dir);
+            const normalize_package_json_dir = package_json_dir.replace(/[\\/]$/, '');
+            if (cachedModules.has(normalize_package_json_dir) === false) {
+                cachedModules.add(normalize_package_json_dir);
                 try {
-                    setupModuleAliases(package_json_dir);
+                    setupModuleAliases(normalize_package_json_dir);
                 }
                 catch (_) {
                     // no aliases declared
                 }
             }
+            return;
         }
         if (aliases) {
             // add default value
