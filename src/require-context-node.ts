@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import type { RequireContext } from './require-context';
-import { nonWebpackRequire } from './webpack-helpers';
+import { nativeRequire } from './webpack-helpers';
 
 // interface RequireLoaderFunction {
 //     (filename: string): any;
@@ -124,7 +124,7 @@ export class RequireContextNode {
             this._cachedModules.set(id, module);
             return module.exports;
         }
-        return nonWebpackRequire(resolveID);
+        return nativeRequire(resolveID);
     }
 
     resolve(id: string): string {
