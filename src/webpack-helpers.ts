@@ -9,3 +9,7 @@ export function nativeRequire(id: string): any {
     const requireFunc = isWebpackContext() ? __non_webpack_require__ : require;
     return requireFunc(id);
 }
+
+export function nativeImport(id: string): Promise<any> {
+    return Promise.resolve().then(() => nativeRequire(id));
+}
